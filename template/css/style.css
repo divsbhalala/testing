@@ -1,0 +1,52 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+    padding: 0 15px;
+}
+.icon-block .material-icons {
+    font-size: inherit;
+}
+.margin-top-5p
+{
+    margin-top: 5%;
+}
+.center-btn
+{
+    text-align: left;
+    padding-top: 1% !important;
+}
+.font-30
+{
+    font-size: 30px !important;
+}
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+    font-family: Flaticon;
+    font-size: 30px;
+    font-style: normal;
+    margin-left: 20px;
+}
+
+.glyph {
+    display: inline-block;
+    width: 120px;
+    margin: 10px;
+    text-align: center;
+    vertical-align: top;
+}
+.glyph .glyph-icon {
+    padding: 10px;
+    display: block;
+    font-family:"Flaticon";
+    font-size: 64px;
+    line-height: 1;
+}
+.glyph .glyph-icon:before {
+    font-size: 64px;
+    margin-left: 0;
+}

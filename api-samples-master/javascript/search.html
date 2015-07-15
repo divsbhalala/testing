@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Search</title>
+  </head>
+  <body>
+    <div id="buttons">
+      <label> <input id="query" value='cats' type="text"/><button id="search-button"  onclick="search()">Search</button></label>
+    </div>
+    <div id="search-container">
+    </div>
+<ul id="results"></ul>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="auth.js"></script>
+    
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+    <script src="http://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+<script>
+function keyWordsearch(){
+        gapi.client.setApiKey('AIzaSyD4H6tfkUXwm6OC6XWF9EOSkloNm9tZGDg');
+        gapi.client.load('youtube', 'v3', function() {
+				data = jQuery.parseJSON( '{ "data": [{"name":"eminem"}] }' );
+console.log(data)
+				$.each(data["data"], function( index, value ) {
+					makeRequest(value["name"]);
+				});
+                
+        });
+}
+    function makeRequest(q) {
+        var request = gapi.client.youtube.search.list({
+                q: q,
+                part: 'snippet', 
+                maxResults: 10
+        });
+        request.execute(function(response)  { 
+console.log(response)                                                                                   
+                $('#results').empty()
+                var srchItems = response.result.items;                      
+                $.each(srchItems, function(index, item) {
+                vidTitle = item.snippet.title;  
+                vidThumburl =  item.snippet.thumbnails.default.url;                 
+                vidThumbimg = '<pre><img id="thumb" src="'+vidThumburl+'" alt="No  Image Available." style="width:204px;height:128px"></pre>';                   
+
+                $('#results').append('<pre>' + vidTitle + vidThumbimg +  '</pre>');                      
+        })  
+    })  
+}
+    keyWordsearch();
+</script>
+  </body>
+</html>
